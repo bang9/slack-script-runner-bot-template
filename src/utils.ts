@@ -17,6 +17,10 @@ export function parseCode(codeGroups: string[], text: string): string[] {
   return parseCode(codeGroups, sliced.slice(ends + slicer.length));
 }
 
+export async function swapToken(code) {
+  await slack.oauth.v2.access({ code, client_id: "", client_secret: "" });
+}
+
 export async function replyMessage(results: any[], id: string, ts: string) {
   try {
     await slack.conversations.join({ channel: id });
